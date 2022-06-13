@@ -1,14 +1,16 @@
 package quiz;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 public class Quiz01 {
 public static void main(String[] args) throws Exception {
 	Scanner sc = new Scanner(System.in);
-	File path = new File("D:/박정호_취업반/abcd1234/test.txt");
+	File path = new File("D:/박정호_취업반/자바 파일입출력/test.txt/");
 	String name, age, addr;
 	
 	while(true) {
@@ -18,13 +20,17 @@ public static void main(String[] args) throws Exception {
 		age = sc.next();
 		System.out.println("주소입력");
 		addr = sc.next();
-		FileOutputStream os = new FileOutputStream(path);
-		os.write(name.getBytes());
+		FileOutputStream fos = new FileOutputStream(path);
+		BufferedOutputStream bos = new BufferedOutputStream(fos);
+		ObjectOutputStream oos = new ObjectOutputStream(bos);
+		fos.write(name.getBytes());
 		System.out.println();
-		os.write(age.getBytes());
+		fos.write(age.getBytes());
 		System.out.println();
-		os.write(addr.getBytes());
+		fos.write(addr.getBytes());
+		System.out.println();
 		break;
 	}
+	
 }
 }

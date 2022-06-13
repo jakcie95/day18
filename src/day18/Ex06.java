@@ -33,16 +33,15 @@ public static void main(String[] args) throws Exception {
 	String path = "D:/박정호_취업반/자바 파일입출력/"; //직렬화 : 객체를 바이트로 변환해서 출력
 									//역직렬화 : 바이트를 객체형식으로 변환
 	AAA info = null;
-	System.out.println("1.저장");
-	System.out.println("2.가져오기");
+	System.out.println("1.추가");
+	System.out.println("2.검색");
 	System.out.println("3.수정");
 	System.out.println("4.삭제");
-	System.out.println("5.검색");
 	int num = sc.nextInt();
 	
 	
 	
-	if(num == 1) {//저장
+	if(num == 1) {//추가,등록기능
 		System.out.println("이름 입력");
 		name = sc.next();
 		System.out.println("주소 입력");
@@ -58,13 +57,13 @@ public static void main(String[] args) throws Exception {
 		
 		oos.close(); bos.close(); fos.close();
 		System.out.println("저장 되었습니다");
-	}else if(num == 2){//가져오기
+	}else if(num == 2){//검색기능
 		File list = new File(path);
 		String[]li = list.list();
 		for(int i=0; i <li.length; i++) {
 			System.out.println(li[i]);
 		}
-		System.out.println("확인할 이름 입력");
+		System.out.println("검색할 이름 입력");
 		name = sc.next();
 		File p = new File(path+name+".txt");
 		
@@ -74,7 +73,7 @@ public static void main(String[] args) throws Exception {
 		info = (AAA)ois.readObject();
 		System.out.println("이름 : "+info.getName());
 		System.out.println("주소 : "+info.getAddr());
-	}else if(num == 3) {//수정
+	}else if(num == 3) {//수정기능
 		File list = new File(path);
 		String name2, addr2;
 		String[]li = list.list();
@@ -105,7 +104,7 @@ public static void main(String[] args) throws Exception {
 			System.out.println("존재하지 않는 파일명입니다.");
 		}
 		
-	}else if(num == 4) {//삭제
+	}else if(num == 4) {//삭제기능
 		File list = new File(path);
 		String[]li = list.list();
 		for(int i=0; i <li.length; i++) {
